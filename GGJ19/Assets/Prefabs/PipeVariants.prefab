@@ -174,11 +174,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PipeSectionCurve3
       objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Type
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -290,6 +285,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e9dc35ba7859b411499e0229a660309e,
         type: 3}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daf56603f44c470287d4391526905b1, type: 3}
 --- !u!224 &2764045429303217444 stripped
@@ -309,11 +309,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PipeSectionCurve1
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Type
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
@@ -426,6 +421,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e9dc35ba7859b411499e0229a660309e,
         type: 3}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daf56603f44c470287d4391526905b1, type: 3}
 --- !u!224 &2764045428543251940 stripped
@@ -445,16 +445,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PipeSectionCurve2
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Orientation
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
@@ -567,6 +557,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e9dc35ba7859b411499e0229a660309e,
         type: 3}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Orientation
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daf56603f44c470287d4391526905b1, type: 3}
 --- !u!224 &2764045428468674763 stripped
@@ -586,16 +586,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PipeSectionCurve4
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Type
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Orientation
-      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
@@ -708,6 +698,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e9dc35ba7859b411499e0229a660309e,
         type: 3}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Orientation
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daf56603f44c470287d4391526905b1, type: 3}
 --- !u!224 &2764045428278282304 stripped
@@ -727,16 +727,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PipeSectionStraight2
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Orientation
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
@@ -805,16 +795,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
       propertyPath: m_AnchorMin.x
       value: 0.5
       objectReference: {fileID: 0}
@@ -849,6 +829,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fbb942db365ab401d906e2053c7ff8c9,
         type: 3}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Orientation
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daf56603f44c470287d4391526905b1, type: 3}
 --- !u!224 &2764045428078067994 stripped
@@ -868,11 +858,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PipeSectionStraight1
-      objectReference: {fileID: 0}
-    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
-        type: 3}
-      propertyPath: m_Type
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 874494294630454264, guid: 9daf56603f44c470287d4391526905b1,
         type: 3}
@@ -985,6 +970,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: fbb942db365ab401d906e2053c7ff8c9,
         type: 3}
+    - target: {fileID: 874494294630454265, guid: 9daf56603f44c470287d4391526905b1,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9daf56603f44c470287d4391526905b1, type: 3}
 --- !u!224 &2764045427711711560 stripped

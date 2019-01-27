@@ -145,6 +145,12 @@ public class BoardPanel : Singleton<BoardPanel>
         Transform piece = playerToSpawnFrom.TakePiece();
         if (piece != null)
         {
+            Tile existingTile = m_LaidTiles[spawnLocation.m_GridX, spawnLocation.m_GridY];
+            if (existingTile != null)
+            {
+                RemoveFromBoard(existingTile);
+            }
+            
             piece.SetParent(m_PipesRoot);
             GridLocation gridLocation = piece.GetComponent<GridLocation>();
             gridLocation.m_GridX = spawnLocation.m_GridX;

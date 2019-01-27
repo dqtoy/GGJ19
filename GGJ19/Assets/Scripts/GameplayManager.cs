@@ -19,6 +19,11 @@ public class GameplayManager : Singleton<GameplayManager>
     public delegate void GameLose();
     public static event GameLose OnGameLose;
 
+
+
+    private int currentLevel = 1;
+    private int prepareTime = 3;
+
     void Start()
     {
         StartGame();
@@ -27,7 +32,7 @@ public class GameplayManager : Singleton<GameplayManager>
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //called by title
@@ -35,6 +40,7 @@ public class GameplayManager : Singleton<GameplayManager>
     {
         LoadLevel();
         gameState = GameState.Playing;
+        SpawnCharacterInUI();
     }
 
 
@@ -52,7 +58,12 @@ public class GameplayManager : Singleton<GameplayManager>
 
         boarddata[0, 1] = 0;
         boarddata[0, 1] = 3;
+        prepareTime = 3;
 
+        //load real data below
+
+
+        //
         BoardPanel.Instance.InitBoard(boarddata, 0, 153);
     }
 
@@ -65,4 +76,21 @@ public class GameplayManager : Singleton<GameplayManager>
     {
         OnGameLose();
     }
+
+
+    /// <summary>
+    /// Spawns the character in UI section
+    /// this is the preparation stage
+    /// </summary>
+    public void SpawnCharacterInUI()
+    {
+        Invoke("SpawnCharacterOnBoard", 3);
+    }
+
+    public void SpawnCharacterOnBoard()
+    {
+        KidCharacterController.Instance.Init();
+    }
+
+
 }

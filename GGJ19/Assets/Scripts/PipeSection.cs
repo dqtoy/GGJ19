@@ -23,16 +23,18 @@ public class PipeSection : MonoBehaviour
     };
 
     public Type m_Type = PipeSection.Type.Cross;
-    public PipeSection.PipeRotation m_Orientation = PipeRotation.NoRotation; 
-    
-    // Start is called before the first frame update
-    void Start()
+    public PipeSection.PipeRotation m_Orientation = PipeRotation.NoRotation;
+
+    public int characterEntry = -1;
+    public int characterExit = -1;
+
+    public void OnPlayerEnter(int enterPoint)
     {
-        
+        //calculate exit point
+        characterEntry = enterPoint;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnPlayerExit()
     {
         
     }

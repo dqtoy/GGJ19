@@ -11,12 +11,15 @@ public enum TitleState
 
 public class Title : MonoBehaviour
 {
+    public FadeInOut Text;
+    private bool clicked = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-        }
-    }
+	private void OnMouseDown()
+	{
+        if (clicked)
+            return;
+        
+        clicked = true;
+        Text.Play();
+	}
 }

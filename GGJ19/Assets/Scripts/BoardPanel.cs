@@ -157,7 +157,7 @@ public class BoardPanel : Singleton<BoardPanel>
         cursor.SnapToGrid();
     }
 
-    bool IsValidPosition(int gridX, int gridY)
+    public bool IsValidPosition(int gridX, int gridY)
     {
         if (gridX < 0)
         {
@@ -177,5 +177,13 @@ public class BoardPanel : Singleton<BoardPanel>
         }
 
         return true;
+    }
+
+    public PipeSection GetPipeSection(int gridX, int gridY)
+    {
+        if (!IsValidPosition(gridX, gridY))
+            return null;
+
+        return m_LaidPipes[gridX, gridY];
     }
 }

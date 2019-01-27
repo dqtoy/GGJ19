@@ -18,12 +18,19 @@ public class KidCharacterController : Singleton<KidCharacterController>
 
     private CharacterState characterState = CharacterState.Preparing;
     private PipeSection currentTile;
+    private Vector3 targetPosition;
 
 
 	private void Update()
 	{
         if (characterState != CharacterState.Moving)
             return;
+
+        if (Vector3.Distance(transform.position, targetPosition)  < 0.001f)
+        {
+            if (wayPoints.Count == 0)
+                OnReachTileEixt();
+        }
 	}
 
 
@@ -50,6 +57,29 @@ public class KidCharacterController : Singleton<KidCharacterController>
 
         //setup waypoints
         wayPoints = PipeUtils.GetWayPoints(currentTile, currentTile.characterEntry, currentTile.characterExit);
+        targetPosition = wayPoints.Dequeue();
+    }
+
+    private void OnReachTileEixt()
+    {
+        //get next tile
+        GridLocation gridLocation = currentTile.GetComponent<GridLocation>();
+        int x = gridLocation.m_GridX;
+        int y = gridLocation.m_GridY;
+        if (currentTile.characterExit == 0)
+            x -= 1;
+        else if (currentTile.characterExit == 1)
+            y += 1;
+        else if (currentTile.characterExit == 2)
+            x += 1;
+        else if (currentTile.characterExit == 3)
+            y -= 1;
+
+        if (!BoardPanel.Instance.IsValidPosition(x, y))
+            GameplayManager.Instance.Lose();
+
+
+
     }
 
 }

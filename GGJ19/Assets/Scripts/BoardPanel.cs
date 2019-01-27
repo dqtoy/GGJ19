@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.WSA;
+﻿using UnityEngine;
 
 public class BoardPanel : Singleton<BoardPanel>
 {

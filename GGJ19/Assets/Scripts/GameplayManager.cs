@@ -73,6 +73,7 @@ public class GameplayManager : Singleton<GameplayManager>
     public void Win()
     {
         //OnGameWin();
+        Debug.Log("Win");
     }
 
     public void Lose()

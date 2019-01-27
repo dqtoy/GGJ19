@@ -28,7 +28,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
     void Start()
     {
-        StartGame();
+        //StartGame();
     }
 
     // Update is called once per frame

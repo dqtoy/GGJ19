@@ -16,6 +16,16 @@ public class Title : MonoBehaviour
 
 	private void Start()
 	{
+        //Text.Play();
+	}
+
+	private void OnMouseDown()
+	{
+        if (clicked)
+            return;
+
+        clicked = true;
         Text.Play();
+        GameplayManager.Instance.StartGame();
 	}
 }

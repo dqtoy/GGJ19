@@ -18,7 +18,7 @@ public class PipeOrientationSetter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (pipeSection.Orientation)
+        switch (pipeSection.m_Orientation)
         {
             case PipeSection.PipeRotation.NoRotation:
                 gameObject.transform.rotation = Quaternion.identity;

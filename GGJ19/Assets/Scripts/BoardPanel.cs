@@ -7,7 +7,8 @@ public class BoardPanel : MonoBehaviour
     public int NumRows = 11;
     public int NumColumns = 14;
 
-    public Player Player1;
+    public Player m_Player1;
+    public GridLocation m_Cursor;
     
     // Start is called before the first frame update
     void Start()
@@ -26,22 +27,22 @@ public class BoardPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             // Move left if possible
-            SetNewPositionIfPossible(Player1.gridX - 1, Player1.gridY);
+            SetNewPositionIfPossible(m_Cursor.m_GridX - 1, m_Cursor.m_GridY);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             // Move left if possible
-            SetNewPositionIfPossible(Player1.gridX, Player1.gridY + 1);
+            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY + 1);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             // Move left if possible
-            SetNewPositionIfPossible(Player1.gridX + 1, Player1.gridY);
+            SetNewPositionIfPossible(m_Cursor.m_GridX + 1, m_Cursor.m_GridY);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             // Move left if possible
-            SetNewPositionIfPossible(Player1.gridX, Player1.gridY - 1);
+            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY - 1);
         }
     }
 
@@ -52,19 +53,9 @@ public class BoardPanel : MonoBehaviour
             return;
         }
 
-        Player1.gridX = gridX;
-        Player1.gridY = gridY;
-
-        RectTransform playerRectTransform = Player1.gameObject.GetComponent<RectTransform>();
-        RectTransform boardRectTransform = gameObject.GetComponent<RectTransform>();
-        
-        float width = playerRectTransform.rect.width;
-        float height = playerRectTransform.rect.height;
-        float gridWidth = boardRectTransform.rect.width / NumColumns;
-        float gridHeight = boardRectTransform.rect.height / NumRows;
-        
-        Vector3 localPosition = new Vector3(gridWidth * gridX + width / 2, - (gridHeight * gridY + height / 2), 0);
-        Player1.gameObject.transform.localPosition = localPosition;
+        m_Cursor.m_GridX = gridX;
+        m_Cursor.m_GridY = gridY;
+        m_Cursor.SnapToGrid();
     }
 
     bool IsValidPosition(int gridX, int gridY)

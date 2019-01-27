@@ -5,8 +5,8 @@ using UnityEngine.WSA;
 
 public class BoardPanel : Singleton<BoardPanel>
 {
-    public int NumRows = 10;
-    public int NumColumns = 14;
+    public const int NumRows = 10;
+    public const int NumColumns = 14;
     public int[,] boarddata;
 
     public Player m_Player1;

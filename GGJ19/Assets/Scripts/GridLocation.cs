@@ -32,8 +32,8 @@ public class GridLocation : MonoBehaviour
         
         float width = rectTransform.rect.width;
         float height = rectTransform.rect.height;
-        float gridWidth = boardRectTransform.rect.width / boardPanel.NumColumns;
-        float gridHeight = boardRectTransform.rect.height / boardPanel.NumRows;
+        float gridWidth = boardRectTransform.rect.width / BoardPanel.NumColumns;
+        float gridHeight = boardRectTransform.rect.height / BoardPanel.NumRows;
         
         rectTransform.anchoredPosition = new Vector2(gridWidth * m_GridX + width / 2, - (gridHeight * m_GridY + height / 2));
     }

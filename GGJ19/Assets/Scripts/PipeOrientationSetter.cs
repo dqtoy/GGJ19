@@ -24,13 +24,13 @@ public class PipeOrientationSetter : MonoBehaviour
                 gameObject.transform.rotation = Quaternion.identity;
                 break;
             case PipeSection.PipeRotation.Clockwise90:
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
                 break;
             case PipeSection.PipeRotation.Clockwise180:
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, -180);
                 break;
             case PipeSection.PipeRotation.Clockwise270:
-                gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, -270);
                 break;
         }
     }

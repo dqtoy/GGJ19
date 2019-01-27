@@ -170,9 +170,9 @@ public class BoardPanel : Singleton<BoardPanel>
         cursor.SnapToGrid();
     }
 
-    public bool CanAcceptTile(int gridX, int gridY)
+    public bool CanAcceptTile(int gridX, int gridY, bool excludeEdges = false)
     {
-        if (!IsValidPosition(gridX, gridY))
+        if (!IsValidPosition(gridX, gridY, excludeEdges))
         {
             return false;
         }
@@ -186,24 +186,19 @@ public class BoardPanel : Singleton<BoardPanel>
         return existingTile.m_Type != Tile.Type.NonRemoveableObstacle;
     }
 
-    public bool IsValidPosition(int gridX, int gridY)
+    public bool IsValidPosition(int gridX, int gridY, bool excludeEdges = false)
     {
-        if (gridX < 0)
-        {
-            return false;
-        }
-        if (gridY < 0)
-        {
-            return false;
-        }
-        if (gridX >= NumColumns)
-        {
-            return false;
-        }
-        if (gridY >= NumRows)
-        {
-            return false;
-        }
+        if (gridX < 0) return false;
+        if (excludeEdges && gridX < 1) return false;
+        
+        if (gridY < 0) return false;
+        if (excludeEdges && gridY < 1) return false;
+        
+        if (gridX >= NumColumns) return false;
+        if (excludeEdges && gridX >= NumColumns-1) return false;
+        
+        if (gridY >= NumRows) return false;
+        if (excludeEdges && gridY >= NumRows - 1) return false;
 
         return true;
     }

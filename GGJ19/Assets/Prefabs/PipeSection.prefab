@@ -126,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 787e3ac290cc94907840126e9d776de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GridX: 0
-  m_GridY: 0
+  m_GridX: -1
+  m_GridY: -1
   width: 0
   height: 0
   gridWidth: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
   textMeshText: {fileID: 0}
   valueFrom: 0
   valueTo: 255
-  time: 1.5
+  time: 4
   delay: 0
   easeType: 1
   pingPong: 0

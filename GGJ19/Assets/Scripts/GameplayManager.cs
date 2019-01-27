@@ -74,8 +74,8 @@ public class GameplayManager : Singleton<GameplayManager>
         
         BoardPanel.Instance.AddToBoard(
             TileFactory.Instance.SpawnTileByName("BlackHole"),
-            8, 
-            8);
+            9, 
+            5);
     }
 
     public void Win()

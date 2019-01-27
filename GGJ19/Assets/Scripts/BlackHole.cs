@@ -40,8 +40,13 @@ public class BlackHole : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_GridLocationComponent.m_GridX == -1)
+        {
+            return; // Don't allow the pipe variants (which are essentially prefabs) to update
+        }
+        
         m_ElapsedTime += Time.deltaTime;
-        gameObject.transform.rotation = Quaternion.Euler(0, 0, (360 * m_RotationsPerSecond * m_ElapsedTime) % 360);
+        //gameObject.transform.rotation = Quaternion.Euler(0, 0, (360 * m_RotationsPerSecond * m_ElapsedTime) % 360);
 
         if (targetGridX != m_GridLocationComponent.m_GridX ||
             targetGridY != m_GridLocationComponent.m_GridY)
@@ -71,15 +76,6 @@ public class BlackHole : MonoBehaviour
             m_TileToSwallow = BoardPanel.Instance.GetTile(targetGridX, targetGridY); // Check if a tile was added
             if (m_TileToSwallow != null)
             {
-                GridLocation gl = m_TileToSwallow.GetComponent<GridLocation>();
-                if (Mathf.Abs(gl.m_GridX - m_GridLocationComponent.m_GridX) > 1 ||
-                    Mathf.Abs(gl.m_GridY - m_GridLocationComponent.m_GridY) > 1)
-                {
-                    // hacky fix for a bug which targets tiles in the top left corner for some reason.
-                    m_TileToSwallow = null;
-                    return;
-                }
-                
                 // Shrink it and squash/stretch it a bit
                 float t = (m_ElapsedTime - m_TimeOfLastMove) / m_MoveTime; // t goes from 0..1
                 float ramp = 0.5f;
@@ -113,14 +109,14 @@ public class BlackHole : MonoBehaviour
         int random = Random.Range(0, 9);
         targetGridX = m_GridLocationComponent.m_GridX + (random % 3) - 1;
         targetGridY = m_GridLocationComponent.m_GridY + (random / 3) - 1;
-        bool canAccept = BoardPanel.Instance.CanAcceptTile(targetGridX, targetGridY);
+        bool canAccept = BoardPanel.Instance.CanAcceptTile(targetGridX, targetGridY, true);
 
         while (canAccept == false)
         {
             random = Random.Range(0, 9);
             targetGridX = m_GridLocationComponent.m_GridX + (random % 3) - 1;
             targetGridY = m_GridLocationComponent.m_GridY + (random / 3) - 1;
-            canAccept = BoardPanel.Instance.CanAcceptTile(targetGridX, targetGridY);
+            canAccept = BoardPanel.Instance.CanAcceptTile(targetGridX, targetGridY, true);
         }
     }
 }

@@ -17,7 +17,7 @@ public class BoardPanel : Singleton<BoardPanel>
 
     public Transform m_PipesRoot;
 
-    private Tile[,] m_LaidPipes;
+    private Tile[,] m_LaidTiles;
     public Tile m_EntryTile;
     public Tile m_ExitTile;
     private float tileLength;
@@ -35,19 +35,33 @@ public class BoardPanel : Singleton<BoardPanel>
 
     public void AddToBoard(Tile tile, int gridX, int gridY)
     {
+        // Check if there's a tile on the board already
+        Tile existingTile = m_LaidTiles[gridX,gridY];
+        if (existingTile != null)
+        {
+            RemoveFromBoard(existingTile);
+        }
+        
         tile.gameObject.transform.SetParent(m_PipesRoot);
         GridLocation gridLocation = tile.GetComponent<GridLocation>();
         gridLocation.m_GridX = gridX;
         gridLocation.m_GridY = gridY;
         gridLocation.SnapToGrid();
 
-        m_LaidPipes[gridX, gridY] = tile;
+        m_LaidTiles[gridX, gridY] = tile;
+    }
+
+    public void RemoveFromBoard(Tile tile)
+    {
+        tile.transform.SetParent(null);
+        GridLocation gridLocation = tile.GetComponent<GridLocation>();
+        m_LaidTiles[gridLocation.m_GridX, gridLocation.m_GridY] = null;
     }
     
     // Start is called before the first frame update
     void Awake()
     {
-        m_LaidPipes = new Tile[NumColumns, NumRows];
+        m_LaidTiles = new Tile[NumColumns, NumRows];
     }
 
     void Update()
@@ -85,7 +99,7 @@ public class BoardPanel : Singleton<BoardPanel>
                 SetNewPositionIfPossible(m_Cursor1.m_GridX, m_Cursor1.m_GridY - 1, m_Cursor1);
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Space))
             {
                 SpawnPieceIfPossible(m_Cursor1, m_Player1Panel);
             }
@@ -125,8 +139,7 @@ public class BoardPanel : Singleton<BoardPanel>
 
     void SpawnPieceIfPossible(GridLocation spawnLocation, PlayerPanel playerToSpawnFrom)
     {
-        Tile existingTile = m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY];
-        if (existingTile != null && existingTile.m_Type == Tile.Type.NonRemoveableObstacle)
+        if (!CanAcceptTile(spawnLocation.m_GridX, spawnLocation.m_GridY))
         {
             return;
         }
@@ -141,7 +154,7 @@ public class BoardPanel : Singleton<BoardPanel>
             gridLocation.m_GridY = spawnLocation.m_GridY;
             gridLocation.SnapToGrid();
 
-            m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY] = piece.GetComponent<Tile>();
+            m_LaidTiles[spawnLocation.m_GridX, spawnLocation.m_GridY] = piece.GetComponent<Tile>();
         }
     }
 
@@ -155,6 +168,22 @@ public class BoardPanel : Singleton<BoardPanel>
         cursor.m_GridX = gridX;
         cursor.m_GridY = gridY;
         cursor.SnapToGrid();
+    }
+
+    public bool CanAcceptTile(int gridX, int gridY)
+    {
+        if (!IsValidPosition(gridX, gridY))
+        {
+            return false;
+        }
+        
+        Tile existingTile = m_LaidTiles[gridX, gridY];
+        if (existingTile == null)
+        {
+            return true;
+        }
+        
+        return existingTile.m_Type != Tile.Type.NonRemoveableObstacle;
     }
 
     public bool IsValidPosition(int gridX, int gridY)
@@ -184,6 +213,6 @@ public class BoardPanel : Singleton<BoardPanel>
         if (!IsValidPosition(gridX, gridY))
             return null;
 
-        return m_LaidPipes[gridX, gridY];
+        return m_LaidTiles[gridX, gridY];
     }
 }

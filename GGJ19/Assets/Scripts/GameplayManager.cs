@@ -15,7 +15,8 @@ public class GameplayManager : Singleton<GameplayManager>
 {
     public GameState gameState = GameState.Title;
 
-    public delegate void GameWin();     public static event GameWin OnGameWin;
+    public delegate void GameWin();     
+    public static event GameWin OnGameWin;
     public delegate void GameLose();
     public static event GameLose OnGameLose;
 
@@ -60,26 +61,33 @@ public class GameplayManager : Singleton<GameplayManager>
             TileFactory.Instance.SpawnTileByName("NonRemoveableObstacle"),
             5, 
             5);
+        
         BoardPanel.Instance.AddToBoard(
             TileFactory.Instance.SpawnTileByName("PipeSectionCross"),
             1,
             0);
+        
         BoardPanel.Instance.AddToBoard(
             TileFactory.Instance.SpawnTileByName("PipeSectionCurve1"),
             2,
             0);
+        
+        BoardPanel.Instance.AddToBoard(
+            TileFactory.Instance.SpawnTileByName("BlackHole"),
+            8, 
+            8);
     }
 
     public void Win()
     {
-        //OnGameWin();
+        OnGameWin?.Invoke();
         Debug.Log("Win");
     }
 
     public void Lose()
     {
         Debug.Log("Lose");
-        //OnGameLose();
+        OnGameLose?.Invoke();
     }
 
 
@@ -87,12 +95,12 @@ public class GameplayManager : Singleton<GameplayManager>
     /// Spawns the character in UI section
     /// this is the preparation stage
     /// </summary>
-    public void SpawnCharacterInUI()
+    private void SpawnCharacterInUI()
     {
         Invoke("SpawnCharacterOnBoard", 3);
     }
 
-    public void SpawnCharacterOnBoard()
+    private void SpawnCharacterOnBoard()
     {
         KidCharacterController.Instance.Init(BoardPanel.Instance.m_EntryTile);
     }

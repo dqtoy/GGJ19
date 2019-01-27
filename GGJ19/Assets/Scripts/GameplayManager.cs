@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum GameState
 {
@@ -81,13 +82,16 @@ public class GameplayManager : Singleton<GameplayManager>
     public void Win()
     {
         OnGameWin?.Invoke();
-        Debug.Log("Win");
+        SceneManager.LoadScene("Win");
+        //Debug.Log("Win");
     }
 
     public void Lose()
     {
-        Debug.Log("Lose");
+        //Debug.Log("Lose");
+
         OnGameLose?.Invoke();
+        SceneManager.LoadScene("Lose");
     }
 
 

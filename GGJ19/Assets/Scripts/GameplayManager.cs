@@ -22,7 +22,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
 
     private int currentLevel = 1;
-    private int prepareTime = 3;
+    private int prepareTime = 2;
 
     void Start()
     {
@@ -72,13 +72,13 @@ public class GameplayManager : Singleton<GameplayManager>
 
     public void Win()
     {
-        OnGameWin();
+        //OnGameWin();
     }
 
     public void Lose()
     {
         Debug.Log("Lose");
-        OnGameLose();
+        //OnGameLose();
     }
 
 

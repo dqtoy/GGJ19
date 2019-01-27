@@ -10,7 +10,8 @@ public class BoardPanel : Singleton<BoardPanel>
     public int[,] boarddata;
 
     public Player m_Player1;
-    public GridLocation m_Cursor;
+    public GridLocation m_Cursor1;
+    public GridLocation m_Cursor2;
 
     public PlayerPanel m_Player1Panel;
     public PlayerPanel m_Player2Panel;
@@ -42,30 +43,66 @@ public class BoardPanel : Singleton<BoardPanel>
 
     void CheckForInput()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        // Player 1 Input
         {
-            // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX - 1, m_Cursor.m_GridY, m_Cursor);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY + 1, m_Cursor);
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX + 1, m_Cursor.m_GridY, m_Cursor);
-        }
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY - 1, m_Cursor);
-        }
+            if (Input.GetKeyDown(KeyCode.A))
+            {
+                // Move left if possible
+                SetNewPositionIfPossible(m_Cursor1.m_GridX - 1, m_Cursor1.m_GridY, m_Cursor1);
+            }
+            else if (Input.GetKeyDown(KeyCode.S))
+            {
+                // Move down if possible
+                SetNewPositionIfPossible(m_Cursor1.m_GridX, m_Cursor1.m_GridY + 1, m_Cursor1);
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                // Move right if possible
+                SetNewPositionIfPossible(m_Cursor1.m_GridX + 1, m_Cursor1.m_GridY, m_Cursor1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                // Move up if possible
+                SetNewPositionIfPossible(m_Cursor1.m_GridX, m_Cursor1.m_GridY - 1, m_Cursor1);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                SpawnPieceIfPossible(m_Cursor1, m_Player1Panel);
+            }
+        }
+        
+        // Player 1 Input
         {
-            SpawnPieceIfPossible(m_Cursor, m_Player1Panel);
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                // Move left if possible
+                SetNewPositionIfPossible(m_Cursor2.m_GridX - 1, m_Cursor2.m_GridY, m_Cursor2);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                // Move down if possible
+                SetNewPositionIfPossible(m_Cursor2.m_GridX, m_Cursor2.m_GridY + 1, m_Cursor2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                // Move right if possible
+                SetNewPositionIfPossible(m_Cursor2.m_GridX + 1, m_Cursor2.m_GridY, m_Cursor2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                // Move up if possible
+                SetNewPositionIfPossible(m_Cursor2.m_GridX, m_Cursor2.m_GridY - 1, m_Cursor2);
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.RightAlt))
+            {
+                SpawnPieceIfPossible(m_Cursor2, m_Player2Panel);
+            }
         }
     }
 

@@ -40,7 +40,7 @@ public class GridLocation : MonoBehaviour
         gridWidth = boardRectTransform.rect.width / BoardPanel.NumColumns;
         gridHeight = boardRectTransform.rect.height / BoardPanel.NumRows;
         
-        rectTransform.anchoredPosition = new Vector2(gridWidth * m_GridX + width / 2, - (gridHeight * m_GridY + height / 2));
+        rectTransform.anchoredPosition3D = new Vector3(gridWidth * m_GridX + width / 2, - (gridHeight * m_GridY + height / 2), 0);
         rectTransform.localScale = Vector3.one;
     }
 

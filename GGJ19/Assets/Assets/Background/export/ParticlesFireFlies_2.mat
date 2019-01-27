@@ -55,7 +55,7 @@ Material:
     - _CoreColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TintColor: {r: 0.18297797, g: 0.52237743, b: 0.553, a: 0.153}
+    - _TintColor: {r: 1, g: 1, b: 1, a: 0.153}
     - _TintColorB: {r: 0, g: 0, b: 0, a: 1}
     - _TintColorG: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _TintColorR: {r: 1, g: 0.5411831, b: 0.1544118, a: 1}

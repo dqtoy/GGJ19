@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lose : MonoBehaviour
 {
-    public FadeInOut item;
-
-	private void Start()
+	private void Update()
 	{
-        item.Play();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SceneManager.LoadScene("Game2");
+        }
 	}
+   
 }
 
 

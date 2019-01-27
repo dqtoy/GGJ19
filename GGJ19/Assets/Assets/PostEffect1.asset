@@ -103,9 +103,9 @@ MonoBehaviour:
       bloom:
         intensity: 1.93
         threshold: 1.27
-        softKnee: 0.329
-        radius: 3.51
-        antiFlicker: 0
+        softKnee: 0.445
+        radius: 2.34
+        antiFlicker: 1
       lensDirt:
         texture: {fileID: 0}
         intensity: 3
@@ -135,9 +135,9 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0, g: 0, b: 0, a: 0}
-          power: {r: 0, g: 0, b: 0, a: 0}
-          offset: {r: 0, g: 0, b: 0, a: 0}
+          slope: {r: 1, g: 1, b: 1, a: 0}
+          power: {r: 1, g: 1, b: 1, a: 0}
+          offset: {r: 1, g: 1, b: 1, a: 0}
         linear:
           lift: {r: 0, g: 0, b: 0, a: 0}
           gamma: {r: 0, g: 0, b: 0, a: 0}
@@ -323,10 +323,10 @@ MonoBehaviour:
       mode: 0
       color: {r: 0, g: 0, b: 0, a: 1}
       center: {x: 0.5, y: 0.5}
-      intensity: 0.402
-      smoothness: 0.278
+      intensity: 0.337
+      smoothness: 0.274
       roundness: 1
-      mask: {fileID: 0}
+      mask: {fileID: 2800000, guid: 93ea19c7d0848ed47806cc339c1b1536, type: 3}
       opacity: 1
       rounded: 0
   dithering:

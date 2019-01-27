@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: River2D
+  m_Name: Cloud1
   m_Shader: {fileID: 4800000, guid: 5bca47d4a34004cbf9afb46bfe35dd8d, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -77,7 +77,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Light: 1.49
+    - _Light: 1.35
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1

@@ -100,30 +100,38 @@ public class TileUtils
             case 1:
                 if (entryPoint == 0)
                     exitPoint = 2;
-                if (entryPoint == 2)
+                else if (entryPoint == 2)
                     exitPoint = 0;
                 break;
             case 2:
                 if (entryPoint == 1)
                     exitPoint = 3;
-                if (entryPoint == 3)
+                else if (entryPoint == 3)
                     exitPoint = 1;
                 break;
             case 3:
                 if (entryPoint == 0)
                     exitPoint = 3;
+                else if (entryPoint == 3)
+                    exitPoint = 0;
                 break;
             case 4:
                 if (entryPoint == 0)
                     exitPoint = 1;
+                else if (entryPoint == 1)
+                    exitPoint = 0;
                 break;
             case 5:
                 if (entryPoint == 1)
                     exitPoint = 2;
+                else if (entryPoint == 2)
+                    exitPoint = 1;
                 break;
             case 6:
                 if (entryPoint == 2)
                     exitPoint = 3;
+                else if (entryPoint == 3)
+                    exitPoint = 2;
                 break;
         }
         if (exitPoint == -1)

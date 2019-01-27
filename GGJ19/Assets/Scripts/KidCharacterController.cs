@@ -90,11 +90,11 @@ public class KidCharacterController : Singleton<KidCharacterController>
         if (currentTile.characterExit == 0)
             x -= 1;
         else if (currentTile.characterExit == 1)
-            y += 1;
+            y -= 1;
         else if (currentTile.characterExit == 2)
             x += 1;
         else if (currentTile.characterExit == 3)
-            y -= 1;
+            y += 1;
 
         if (!BoardPanel.Instance.IsValidPosition(x, y))
         {

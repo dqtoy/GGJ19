@@ -2,17 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameplayManager : MonoBehaviour
+public enum GameState
 {
-    // Start is called before the first frame update
+    Title,
+    Playing,
+    Win,
+    Lose
+};
+
+
+public class GameplayManager : Singleton<GameplayManager>
+{
+    public GameState gameState = GameState.Title;
+
+    public delegate void GameWin();     public static event GameWin OnGameWin;
+    public delegate void GameLose();
+    public static event GameLose OnGameLose;
+
     void Start()
     {
-        
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    //called by title
+    public void StartGame()
+    {
+        LoadLevel();
+        gameState = GameState.Playing;
+    }
+
+
+    public void LoadLevel()
+    {
+        //mock date 
+        int[,] boarddata = new int[11, 14];
+        for (int i = 0; i < 11; i++)
+        {
+            for (int j = 0; j < 14; j++)
+            {
+                boarddata[i, j] = 1;
+            }
+        }
+
+        boarddata[0, 1] = 0;
+        boarddata[0, 1] = 3;
+
+        BoardPanel.Instance.InitBoard(boarddata, 0, 153);
+    }
+
+    public void Win()
+    {
+        OnGameWin();
+    }
+
+    public void Lose()
+    {
+        OnGameLose();
     }
 }

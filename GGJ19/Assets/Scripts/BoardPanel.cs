@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.WSA;
 
-public class BoardPanel : MonoBehaviour
+public class BoardPanel : Singleton<BoardPanel>
 {
     public int NumRows = 10;
     public int NumColumns = 14;
+    public int[,] boarddata;
 
     public Player m_Player1;
     public GridLocation m_Cursor;
@@ -24,10 +25,19 @@ public class BoardPanel : MonoBehaviour
         m_LaidPipes = new PipeSection[NumColumns,NumRows];
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        if (GameplayManager.Instance.gameState != GameState.Playing)
+            return;
+        
         CheckForInput();
+    }
+
+
+    public void InitBoard(int[,] data, int startId, int endId)
+    {
+        boarddata = data;
     }
 
     void CheckForInput()

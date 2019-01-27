@@ -139,7 +139,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 63323514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 063acdf03a3524d82a61f8768500aa93, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ab8e0fab71034c02a7a1dc1619f922f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pipePrefabs:
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4462e138b173340a8a1788d92432b487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
 --- !u!4 &63323517
 Transform:
   m_ObjectHideFlags: 0

@@ -14,12 +14,8 @@ public class Title : MonoBehaviour
     public FadeInOut Text;
     private bool clicked = false;
 
-	private void OnMouseDown()
+	private void Start()
 	{
-        if (clicked)
-            return;
-        
-        clicked = true;
         Text.Play();
 	}
 }

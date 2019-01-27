@@ -485,7 +485,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   textMeshText: {fileID: 0}
   valueFrom: 0
-  valueTo: 255
+  valueTo: 1
   time: 4
   delay: 0
   easeType: 1

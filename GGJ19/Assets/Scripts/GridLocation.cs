@@ -48,4 +48,9 @@ public class GridLocation : MonoBehaviour
     {
         return new Vector2(gridWidth * m_GridX + width / 2, -(gridHeight * m_GridY + height / 2));
     }
+
+    public Vector2 GetAnchoredPosition(int gridX, int gridY)
+    {
+        return new Vector2(gridWidth * gridX + width / 2, -(gridHeight * gridY + height / 2));
+    }
 }

@@ -33,7 +33,8 @@ public class Tile : MonoBehaviour
     {
         //calculate exit point
         characterEntry = enterPoint;
-        characterExit = PipeUtils.GetExitPoint(this, enterPoint);
+        characterExit = TileUtils.GetExitPoint(this, enterPoint);
+        KidCharacterController.Instance.UpdateWayPoint();
     }
 
     public void OnPlayerExit()

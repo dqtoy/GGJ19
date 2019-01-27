@@ -14,11 +14,11 @@ public class KidCharacterController : Singleton<KidCharacterController>
 {
     public GameObject kidCharacter;
     public float moveSpeed;
-    public Queue<Vector3> wayPoints;
+    public Queue<Vector2> wayPoints;
 
     private CharacterState characterState = CharacterState.Preparing;
     private Tile currentTile;
-    private Vector3 targetPosition;
+    private Vector2 targetPosition;
 
 
 	private void Update()
@@ -26,11 +26,27 @@ public class KidCharacterController : Singleton<KidCharacterController>
         if (characterState != CharacterState.Moving)
             return;
 
-        if (Vector3.Distance(transform.position, targetPosition)  < 0.001f)
+        RectTransform rectTransform = GetComponent<RectTransform>();
+        float dist = Vector2.Distance(rectTransform.anchoredPosition, targetPosition);
+        if (dist < 0.001f)
         {
             if (wayPoints.Count == 0)
+            {
                 OnReachTileEixt();
+                return;
+            }
+            else
+            {
+                targetPosition = wayPoints.Dequeue();
+                return;
+            }
         }
+
+        Vector2 direction = (targetPosition - rectTransform.anchoredPosition).normalized;
+        float moveDist = Mathf.Min(moveSpeed, dist);
+        rectTransform.anchoredPosition += direction * moveDist;
+
+
 	}
 
 
@@ -50,13 +66,19 @@ public class KidCharacterController : Singleton<KidCharacterController>
     private void SpawnCharacter()
     {
         //spawn at spawn point
-        //kidCharacter.SetActive(true);
+        kidCharacter.SetActive(true);
 
         currentTile.OnPlayerEnter(0);
 
         //setup waypoints
-        wayPoints = PipeUtils.GetWayPoints(currentTile, currentTile.characterEntry, currentTile.characterExit);
+        //wayPoints = TileUtils.GetWayPoints(currentTile, currentTile.characterEntry, currentTile.characterExit);
+        //UpdateWayPoint();
         targetPosition = wayPoints.Dequeue();
+    }
+
+    public void UpdateWayPoint()
+    {
+        wayPoints = TileUtils.GetWayPoints(currentTile, currentTile.characterEntry, currentTile.characterExit);
     }
 
     private void OnReachTileEixt()
@@ -75,8 +97,37 @@ public class KidCharacterController : Singleton<KidCharacterController>
             y -= 1;
 
         if (!BoardPanel.Instance.IsValidPosition(x, y))
+        {
             GameplayManager.Instance.Lose();
+            return;
+        }
 
+        Tile neighborTile = BoardPanel.Instance.GetTile(x, y);
+        if (neighborTile == null)
+        {
+            GameplayManager.Instance.Lose();
+            return;
+        }
+
+        if (neighborTile == BoardPanel.Instance.m_ExitTile)
+        {
+            GameplayManager.Instance.Win();
+            return;
+        }
+
+        int newEnterPoint = (currentTile.characterExit + 2) % 4;
+        if (TileUtils.Connects(newEnterPoint, neighborTile))
+        {
+            currentTile.OnPlayerExit();
+            currentTile = neighborTile;
+            neighborTile.OnPlayerEnter(newEnterPoint);
+
+        }
+        else
+        {
+            GameplayManager.Instance.Lose();
+            return;
+        }
 
 
     }

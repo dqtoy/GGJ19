@@ -8,6 +8,8 @@ public class GridLocation : MonoBehaviour
     public int m_GridX = 0;
     public int m_GridY = 0;
 
+    public float width;
+    public float height;
     public float gridWidth;
     public float gridHeight;
 
@@ -33,12 +35,17 @@ public class GridLocation : MonoBehaviour
             GetCachedMembers();
         }
         
-        float width = rectTransform.rect.width;
-        float height = rectTransform.rect.height;
+        width = rectTransform.rect.width;
+        height = rectTransform.rect.height;
         gridWidth = boardRectTransform.rect.width / BoardPanel.NumColumns;
         gridHeight = boardRectTransform.rect.height / BoardPanel.NumRows;
         
         rectTransform.anchoredPosition = new Vector2(gridWidth * m_GridX + width / 2, - (gridHeight * m_GridY + height / 2));
         rectTransform.localScale = Vector3.one;
+    }
+
+    public Vector2 GetAnchoredPosition()
+    {
+        return new Vector2(gridWidth * m_GridX + width / 2, -(gridHeight * m_GridY + height / 2));
     }
 }

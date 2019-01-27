@@ -179,7 +179,7 @@ public class BoardPanel : Singleton<BoardPanel>
         return true;
     }
 
-    public Tile GetPipeSection(int gridX, int gridY)
+    public Tile GetTile(int gridX, int gridY)
     {
         if (!IsValidPosition(gridX, gridY))
             return null;

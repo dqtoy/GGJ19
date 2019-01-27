@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeUtils
+public class TileUtils
 {
     /// <summary>
     /// check if adjacent blocks connect
@@ -10,16 +10,16 @@ public class PipeUtils
     /// <returns>The connects.</returns>
     /// <param name="exitPoint">Exit point of current tile.</param>
     /// <param name="neighborType">pipe type id of the neighbor tile.</param>
-    static public bool Connects(int exitPoint, int neighborType)
+    static public bool Connects(int enterPoint, int neighborType)
     {
         bool[] accectedEntryPoints = GetConnectPointsByType(neighborType);
-        return true;
+        return accectedEntryPoints[enterPoint];
     }
 
-    static public bool Connects(int exitPoint, Tile pipe)
+    static public bool Connects(int enterPoint, Tile pipe)
     {
         int typeId = GetTypeId(pipe.m_Type, pipe.m_Orientation);
-        return Connects(exitPoint, typeId);
+        return Connects(enterPoint, typeId);
     }
 
     static public int GetTypeId(Tile.Type mainType, Tile.PipeRotation subType)
@@ -133,11 +133,11 @@ public class PipeUtils
 
 
     //-1 is center
-    static public Queue<Vector3> GetWayPoints(Tile pipe, int startPoint, int exitPoint)
+    static public Queue<Vector2> GetWayPoints(Tile pipe, int startPoint, int exitPoint)
     {
         GridLocation gridLocation = pipe.GetComponent<GridLocation>();
-        Queue<Vector3> queue = new Queue<Vector3>();
-        Vector3 wayPoint = gridLocation.transform.position;
+        Queue<Vector2> queue = new Queue<Vector2>();
+        Vector2 wayPoint = gridLocation.GetAnchoredPosition();
         if (startPoint == 0)
         {
             wayPoint.x -= gridLocation.gridWidth / 2;

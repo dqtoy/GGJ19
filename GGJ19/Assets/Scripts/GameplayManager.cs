@@ -60,6 +60,14 @@ public class GameplayManager : Singleton<GameplayManager>
             TileFactory.Instance.SpawnTileByName("NonRemoveableObstacle"),
             5, 
             5);
+        BoardPanel.Instance.AddToBoard(
+            TileFactory.Instance.SpawnTileByName("PipeSectionCross"),
+            1,
+            0);
+        BoardPanel.Instance.AddToBoard(
+            TileFactory.Instance.SpawnTileByName("PipeSectionCurve1"),
+            2,
+            0);
     }
 
     public void Win()
@@ -69,6 +77,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
     public void Lose()
     {
+        Debug.Log("Lose");
         OnGameLose();
     }
 

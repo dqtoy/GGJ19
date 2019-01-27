@@ -13,15 +13,23 @@ public class GridLocation : MonoBehaviour
     private RectTransform rectTransform;
     private RectTransform boardRectTransform;
 
-    void Start()
+    void GetCachedMembers()
     {
         boardPanel = GetComponentInParent<BoardPanel>();
         rectTransform  = gameObject.GetComponent<RectTransform>();
-        boardRectTransform = boardPanel.gameObject.GetComponent<RectTransform>();
+        if (boardPanel != null)
+        {
+            boardRectTransform = boardPanel.gameObject.GetComponent<RectTransform>();
+        }
     }
     
     public void SnapToGrid()
     {
+        if (boardPanel == null)
+        {
+            GetCachedMembers();
+        }
+        
         float width = rectTransform.rect.width;
         float height = rectTransform.rect.height;
         float gridWidth = boardRectTransform.rect.width / boardPanel.NumColumns;

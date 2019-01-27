@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 874494294630454266}
   - component: {fileID: 874494294630454265}
   - component: {fileID: 3235898624707035072}
+  - component: {fileID: 4047413233760863834}
   m_Layer: 0
   m_Name: PipeSection
   m_TagString: Untagged
@@ -27,17 +28,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874494294630454215}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 70, y: 70}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 474, y: -282}
+  m_SizeDelta: {x: 101, y: 101}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &874494294630454267
 CanvasRenderer:
@@ -88,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1e635321f024b949e4cf195cb4c57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FlipHorizontal: 0
-  Orientation: 0
+  m_Type: 0
+  m_Orientation: 0
 --- !u!114 &3235898624707035072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,3 +103,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 252fcbe46407b4f47bc181a136b8f11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4047413233760863834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 874494294630454215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787e3ac290cc94907840126e9d776de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GridX: 0
+  m_GridY: 0

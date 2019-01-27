@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class BoardPanel : MonoBehaviour
 {
-    public int NumRows = 11;
+    public int NumRows = 10;
     public int NumColumns = 14;
 
     public Player m_Player1;
     public GridLocation m_Cursor;
+
+    public PlayerPanel m_Player1Panel;
+    public PlayerPanel m_Player2Panel;
+
+    public Transform m_PipesRoot;
+
+    private PipeSection[,] m_LaidPipes;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_LaidPipes = new PipeSection[NumColumns,NumRows];
     }
 
     // Update is called once per frame
@@ -27,35 +35,56 @@ public class BoardPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX - 1, m_Cursor.m_GridY);
+            SetNewPositionIfPossible(m_Cursor.m_GridX - 1, m_Cursor.m_GridY, m_Cursor);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
             // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY + 1);
+            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY + 1, m_Cursor);
         }
         if (Input.GetKeyDown(KeyCode.D))
         {
             // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX + 1, m_Cursor.m_GridY);
+            SetNewPositionIfPossible(m_Cursor.m_GridX + 1, m_Cursor.m_GridY, m_Cursor);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
             // Move left if possible
-            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY - 1);
+            SetNewPositionIfPossible(m_Cursor.m_GridX, m_Cursor.m_GridY - 1, m_Cursor);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            SpawnPieceIfPossible(m_Cursor, m_Player1Panel);
         }
     }
 
-    void SetNewPositionIfPossible(int gridX, int gridY)
+    void SpawnPieceIfPossible(GridLocation spawnLocation, PlayerPanel playerToSpawnFrom)
+    {
+        // Need to check if there's a pipe there already
+        Transform piece = playerToSpawnFrom.TakePiece();
+        if (piece != null)
+        {
+            piece.SetParent(m_PipesRoot);
+            GridLocation gridLocation = piece.GetComponent<GridLocation>();
+            gridLocation.m_GridX = spawnLocation.m_GridX;
+            gridLocation.m_GridY = spawnLocation.m_GridY;
+            gridLocation.SnapToGrid();
+
+            m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY] = piece.GetComponent<PipeSection>();
+        }
+    }
+
+    void SetNewPositionIfPossible(int gridX, int gridY, GridLocation cursor)
     {
         if (!IsValidPosition(gridX, gridY))
         {
             return;
         }
 
-        m_Cursor.m_GridX = gridX;
-        m_Cursor.m_GridY = gridY;
-        m_Cursor.SnapToGrid();
+        cursor.m_GridX = gridX;
+        cursor.m_GridY = gridY;
+        cursor.SnapToGrid();
     }
 
     bool IsValidPosition(int gridX, int gridY)

@@ -8,7 +8,7 @@ public class PipeFactory : Singleton<PipeFactory>
     public List<PipeSection> pipePrefabs;
     
     // Start is called before the first frame update
-    void SpawnRandomPipe(Transform parent)
+    public void SpawnRandomPipe(Transform parent)
     {
         int random = UnityEngine.Random.Range(1, pipePrefabs.Count);
         Instantiate(pipePrefabs[random-1], parent);

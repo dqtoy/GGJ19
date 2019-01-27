@@ -46,25 +46,20 @@ public class GameplayManager : Singleton<GameplayManager>
 
     public void LoadLevel()
     {
-        //mock date 
-        int[,] boarddata = new int[11, 14];
-        for (int i = 0; i < 11; i++)
-        {
-            for (int j = 0; j < 14; j++)
-            {
-                boarddata[i, j] = 1;
-            }
-        }
-
-        boarddata[0, 1] = 0;
-        boarddata[0, 1] = 3;
-        prepareTime = 3;
-
-        //load real data below
-
-
-        //
-        BoardPanel.Instance.InitBoard(boarddata, 0, 153);
+        // Add the start point
+        BoardPanel.Instance.SetEntryExit(
+            PipeFactory.Instance.SpawnTileByName("PipeSectionStraight1"), 
+            0, 
+            0, 
+            PipeFactory.Instance.SpawnTileByName("ExitTile"), 
+            13, 
+            9);
+        
+        // Add an obstacle
+        BoardPanel.Instance.AddToBoard(
+            PipeFactory.Instance.SpawnTileByName("NonRemoveableObstacle"),
+            5, 
+            5);
     }
 
     public void Win()
@@ -89,7 +84,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
     public void SpawnCharacterOnBoard()
     {
-        KidCharacterController.Instance.Init(BoardPanel.Instance.EntryTile);
+        KidCharacterController.Instance.Init(BoardPanel.Instance.m_EntryTile);
     }
 
 

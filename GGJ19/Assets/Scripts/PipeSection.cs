@@ -11,7 +11,8 @@ public class PipeSection : MonoBehaviour
     {
         Cross,
         Straight,
-        Curved
+        Curved,
+        NonRemoveableObstacle
     };
     
     public enum PipeRotation
@@ -39,6 +40,4 @@ public class PipeSection : MonoBehaviour
     {
         
     }
-
-
 }

@@ -7,7 +7,6 @@ public class BoardPanel : Singleton<BoardPanel>
 {
     public const int NumRows = 10;
     public const int NumColumns = 14;
-    public int[,] boarddata;
 
     public Player m_Player1;
     public GridLocation m_Cursor1;
@@ -19,18 +18,37 @@ public class BoardPanel : Singleton<BoardPanel>
     public Transform m_PipesRoot;
 
     private PipeSection[,] m_LaidPipes;
-    public PipeSection EntryTile;
-    public PipeSection ExitTile;
+    public PipeSection m_EntryTile;
+    public PipeSection m_ExitTile;
     private float tileLength;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_LaidPipes = new PipeSection[NumColumns,NumRows];
-        //tileLength = 
 
+    public void SetEntryExit(
+        PipeSection entryTile, int entryGridX, int entryGridY, 
+        PipeSection exitTile, int exitGridX, int exitGridY)
+    {
+        m_EntryTile = entryTile;
+        AddToBoard(entryTile, entryGridX, entryGridY);
+        
+        m_ExitTile = exitTile;
+        AddToBoard(exitTile, exitGridX, exitGridY);
     }
 
+    public void AddToBoard(PipeSection tile, int gridX, int gridY)
+    {
+        tile.gameObject.transform.SetParent(m_PipesRoot);
+        GridLocation gridLocation = tile.GetComponent<GridLocation>();
+        gridLocation.m_GridX = gridX;
+        gridLocation.m_GridY = gridY;
+        gridLocation.SnapToGrid();
+
+        m_LaidPipes[gridX, gridY] = tile;
+    }
+    
+    // Start is called before the first frame update
+    void Awake()
+    {
+        m_LaidPipes = new PipeSection[NumColumns, NumRows];
+    }
 
     void Update()
     {
@@ -38,12 +56,6 @@ public class BoardPanel : Singleton<BoardPanel>
             return;
         
         CheckForInput();
-    }
-
-
-    public void InitBoard(int[,] data, int startId, int endId)
-    {
-        boarddata = data;
     }
 
     void CheckForInput()
@@ -113,6 +125,12 @@ public class BoardPanel : Singleton<BoardPanel>
 
     void SpawnPieceIfPossible(GridLocation spawnLocation, PlayerPanel playerToSpawnFrom)
     {
+        PipeSection existingTile = m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY];
+        if (existingTile != null && existingTile.m_Type == PipeSection.Type.NonRemoveableObstacle)
+        {
+            return;
+        }
+        
         // Need to check if there's a pipe there already
         Transform piece = playerToSpawnFrom.TakePiece();
         if (piece != null)

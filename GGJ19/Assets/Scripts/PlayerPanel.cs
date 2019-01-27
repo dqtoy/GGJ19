@@ -45,7 +45,7 @@ public class PlayerPanel : MonoBehaviour
         // Populate the piece at position 5
         if (pieceLocations[pieceLocations.Count - 1].transform.childCount == 0)
         {
-            PipeFactory.Instance.SpawnRandomPipe(pieceLocations[pieceLocations.Count - 1].transform);
+            PipeFactory.Instance.SpawnRandomTile(pieceLocations[pieceLocations.Count - 1].transform);
         }
         
     }

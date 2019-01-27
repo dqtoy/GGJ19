@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: gh_ui_allspark
+  m_Name: gh_ui_allspark_(1)
   m_Shader: {fileID: 4800000, guid: 80e88302364f3fb4fafd9a4e53c54c51, type: 3}
   m_ShaderKeywords: GAF_VERTICES_TRANSFORM_ON
   m_LightmapFlags: 4
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1808412a76f46484686357968eeb64fd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 18a87f3b20ddf48cd95d6a679dd903a2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

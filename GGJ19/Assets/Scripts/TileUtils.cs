@@ -146,6 +146,7 @@ public class TileUtils
         GridLocation gridLocation = pipe.GetComponent<GridLocation>();
         Queue<Vector2> queue = new Queue<Vector2>();
         Vector2 wayPoint = gridLocation.GetAnchoredPosition();
+        /*
         if (startPoint == 0)
         {
             wayPoint.x -= gridLocation.gridWidth / 2;
@@ -162,6 +163,7 @@ public class TileUtils
         {
             wayPoint.y -= gridLocation.gridHeight / 2;
         }
+        */
         queue.Enqueue(wayPoint);
 
 

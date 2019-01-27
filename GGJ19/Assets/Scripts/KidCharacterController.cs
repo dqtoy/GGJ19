@@ -13,24 +13,25 @@ public enum CharacterState
 public class KidCharacterController : Singleton<KidCharacterController>
 {
     public GameObject kidCharacter;
+    public float moveSpeed;
+    public Queue<Vector3> wayPoints;
 
     private CharacterState characterState = CharacterState.Preparing;
-    //private int currentTile = ;
+    private PipeSection currentTile;
 
 
 	private void Update()
 	{
         if (characterState != CharacterState.Moving)
             return;
-
-
 	}
 
 
 
 
-	public void Init()
+    public void Init(PipeSection startTile)
     {
+        currentTile = startTile;
         SpawnCharacter();
         StartMoving();
     }
@@ -44,6 +45,11 @@ public class KidCharacterController : Singleton<KidCharacterController>
     {
         //spawn at spawn point
         kidCharacter.SetActive(true);
+
+        currentTile.OnPlayerEnter(0);
+
+        //setup waypoints
+        wayPoints = PipeUtils.GetWayPoints(currentTile, currentTile.characterEntry, currentTile.characterExit);
     }
 
 }

@@ -8,6 +8,9 @@ public class GridLocation : MonoBehaviour
     public int m_GridX = 0;
     public int m_GridY = 0;
 
+    public float gridWidth;
+    public float gridHeight;
+
     // Cached Variables
     private BoardPanel boardPanel;
     private RectTransform rectTransform;
@@ -32,8 +35,8 @@ public class GridLocation : MonoBehaviour
         
         float width = rectTransform.rect.width;
         float height = rectTransform.rect.height;
-        float gridWidth = boardRectTransform.rect.width / BoardPanel.NumColumns;
-        float gridHeight = boardRectTransform.rect.height / BoardPanel.NumRows;
+        gridWidth = boardRectTransform.rect.width / BoardPanel.NumColumns;
+        gridHeight = boardRectTransform.rect.height / BoardPanel.NumRows;
         
         rectTransform.anchoredPosition = new Vector2(gridWidth * m_GridX + width / 2, - (gridHeight * m_GridY + height / 2));
     }

@@ -19,11 +19,16 @@ public class BoardPanel : Singleton<BoardPanel>
     public Transform m_PipesRoot;
 
     private PipeSection[,] m_LaidPipes;
+    public PipeSection EntryTile;
+    public PipeSection ExitTile;
+    private float tileLength;
     
     // Start is called before the first frame update
     void Start()
     {
         m_LaidPipes = new PipeSection[NumColumns,NumRows];
+        //tileLength = 
+
     }
 
 

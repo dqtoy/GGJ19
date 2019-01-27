@@ -89,7 +89,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
     public void SpawnCharacterOnBoard()
     {
-        KidCharacterController.Instance.Init();
+        KidCharacterController.Instance.Init(BoardPanel.Instance.EntryTile);
     }
 
 

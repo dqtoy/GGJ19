@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeUtils : Singleton<PipeUtils>
+public class PipeUtils
 {
     /// <summary>
     /// check if adjacent blocks connect
@@ -10,19 +10,19 @@ public class PipeUtils : Singleton<PipeUtils>
     /// <returns>The connects.</returns>
     /// <param name="exitPoint">Exit point of current tile.</param>
     /// <param name="neighborType">pipe type id of the neighbor tile.</param>
-    public bool Connects(int exitPoint, int neighborType)
+    static public bool Connects(int exitPoint, int neighborType)
     {
         bool[] accectedEntryPoints = GetConnectPointsByType(neighborType);
         return true;
     }
 
-    public bool Connects(int exitPoint, PipeSection pipe)
+    static public bool Connects(int exitPoint, PipeSection pipe)
     {
         int typeId = GetTypeId(pipe.m_Type, pipe.m_Orientation);
         return Connects(exitPoint, typeId);
     }
 
-    public int GetTypeId(PipeSection.Type mainType, PipeSection.PipeRotation subType)
+    static public int GetTypeId(PipeSection.Type mainType, PipeSection.PipeRotation subType)
     {
         int typeId = 0;
         if (mainType == PipeSection.Type.Cross)
@@ -47,13 +47,13 @@ public class PipeUtils : Singleton<PipeUtils>
         return typeId;
     }
 
-    public bool[] GetConnectPointsByType(PipeSection.Type mainType, PipeSection.PipeRotation subType)
+    static public bool[] GetConnectPointsByType(PipeSection.Type mainType, PipeSection.PipeRotation subType)
     {
         int typeId = GetTypeId(mainType, subType);
         return GetConnectPointsByType(typeId);
     }
 
-    public bool[] GetConnectPointsByType(int typeId)
+    static public bool[] GetConnectPointsByType(int typeId)
     {
         bool[] connects;
         switch (typeId)
@@ -88,7 +88,7 @@ public class PipeUtils : Singleton<PipeUtils>
         return connects;
     }
 
-    public int GetExitPoint(PipeSection pipe, int entryPoint)
+    static public int GetExitPoint(PipeSection pipe, int entryPoint)
     {
         int exitPoint = -1;
         int typeId = GetTypeId(pipe.m_Type, pipe.m_Orientation);
@@ -129,5 +129,52 @@ public class PipeUtils : Singleton<PipeUtils>
         if (exitPoint == -1)
             Debug.LogError("Could not find exit point: " + typeId + " " + entryPoint);
         return exitPoint;
+    }
+
+
+    //-1 is center
+    static public Queue<Vector3> GetWayPoints(PipeSection pipe, int startPoint, int exitPoint)
+    {
+        GridLocation gridLocation = pipe.GetComponent<GridLocation>();
+        Queue<Vector3> queue = new Queue<Vector3>();
+        Vector3 wayPoint = gridLocation.transform.position;
+        if (startPoint == 0)
+        {
+            wayPoint.x -= gridLocation.gridWidth / 2;
+        }
+        else if (startPoint == 1)
+        {
+            wayPoint.y += gridLocation.gridHeight / 2;
+        }
+        else if (startPoint == 2)
+        {
+            wayPoint.x += gridLocation.gridWidth / 2;
+        }
+        else if (startPoint == 3)
+        {
+            wayPoint.y -= gridLocation.gridHeight / 2;
+        }
+        queue.Enqueue(wayPoint);
+
+
+        if (exitPoint == 0)
+        {
+            wayPoint.x -= gridLocation.gridWidth / 2;
+        }
+        else if (exitPoint == 1)
+        {
+            wayPoint.y += gridLocation.gridHeight / 2;
+        }
+        else if (exitPoint == 2)
+        {
+            wayPoint.x += gridLocation.gridWidth / 2;
+        }
+        else if (exitPoint == 3)
+        {
+            wayPoint.y -= gridLocation.gridHeight / 2;
+        }
+        queue.Enqueue(wayPoint);
+
+        return queue;
     }
 }

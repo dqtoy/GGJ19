@@ -32,6 +32,7 @@ public class PipeSection : MonoBehaviour
     {
         //calculate exit point
         characterEntry = enterPoint;
+        characterExit = PipeUtils.GetExitPoint(this, enterPoint);
     }
 
     public void OnPlayerExit()

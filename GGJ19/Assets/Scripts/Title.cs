@@ -2,17 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TitleState
+{
+    FadeIn,
+    Idle,
+    FadeOut
+};
+
 public class Title : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+        }
     }
 }

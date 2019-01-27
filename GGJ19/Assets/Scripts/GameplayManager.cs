@@ -48,16 +48,16 @@ public class GameplayManager : Singleton<GameplayManager>
     {
         // Add the start point
         BoardPanel.Instance.SetEntryExit(
-            PipeFactory.Instance.SpawnTileByName("PipeSectionStraight1"), 
+            TileFactory.Instance.SpawnTileByName("PipeSectionStraight1"), 
             0, 
             0, 
-            PipeFactory.Instance.SpawnTileByName("ExitTile"), 
+            TileFactory.Instance.SpawnTileByName("ExitTile"), 
             13, 
             9);
         
         // Add an obstacle
         BoardPanel.Instance.AddToBoard(
-            PipeFactory.Instance.SpawnTileByName("NonRemoveableObstacle"),
+            TileFactory.Instance.SpawnTileByName("NonRemoveableObstacle"),
             5, 
             5);
     }

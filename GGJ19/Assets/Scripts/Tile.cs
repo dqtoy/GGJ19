@@ -5,13 +5,13 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [Serializable]
-public class PipeSection : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     public enum Type
     {
-        Cross,
-        Straight,
-        Curved,
+        CrossPipe,
+        StraightPipe,
+        CurvedPipe,
         NonRemoveableObstacle
     };
     
@@ -23,8 +23,8 @@ public class PipeSection : MonoBehaviour
         Clockwise270
     };
 
-    public Type m_Type = PipeSection.Type.Cross;
-    public PipeSection.PipeRotation m_Orientation = PipeRotation.NoRotation;
+    public Type m_Type = Tile.Type.CrossPipe;
+    public Tile.PipeRotation m_Orientation = PipeRotation.NoRotation;
 
     public int characterEntry = -1;
     public int characterExit = -1;

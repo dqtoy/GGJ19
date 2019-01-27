@@ -16,30 +16,30 @@ public class PipeUtils
         return true;
     }
 
-    static public bool Connects(int exitPoint, PipeSection pipe)
+    static public bool Connects(int exitPoint, Tile pipe)
     {
         int typeId = GetTypeId(pipe.m_Type, pipe.m_Orientation);
         return Connects(exitPoint, typeId);
     }
 
-    static public int GetTypeId(PipeSection.Type mainType, PipeSection.PipeRotation subType)
+    static public int GetTypeId(Tile.Type mainType, Tile.PipeRotation subType)
     {
         int typeId = 0;
-        if (mainType == PipeSection.Type.Cross)
+        if (mainType == Tile.Type.CrossPipe)
             typeId = 0;
-        else if (mainType == PipeSection.Type.Straight)
+        else if (mainType == Tile.Type.StraightPipe)
         {
-            if (subType == PipeSection.PipeRotation.NoRotation)
+            if (subType == Tile.PipeRotation.NoRotation)
                 typeId = 1;
             else typeId = 2;
         }
         else
         {
-            if (subType == PipeSection.PipeRotation.NoRotation)
+            if (subType == Tile.PipeRotation.NoRotation)
                 typeId = 3;
-            else if (subType == PipeSection.PipeRotation.Clockwise90)
+            else if (subType == Tile.PipeRotation.Clockwise90)
                 typeId = 4;
-            else if (subType == PipeSection.PipeRotation.Clockwise180)
+            else if (subType == Tile.PipeRotation.Clockwise180)
                 typeId = 5;
             else typeId = 6;
         }
@@ -47,7 +47,7 @@ public class PipeUtils
         return typeId;
     }
 
-    static public bool[] GetConnectPointsByType(PipeSection.Type mainType, PipeSection.PipeRotation subType)
+    static public bool[] GetConnectPointsByType(Tile.Type mainType, Tile.PipeRotation subType)
     {
         int typeId = GetTypeId(mainType, subType);
         return GetConnectPointsByType(typeId);
@@ -88,7 +88,7 @@ public class PipeUtils
         return connects;
     }
 
-    static public int GetExitPoint(PipeSection pipe, int entryPoint)
+    static public int GetExitPoint(Tile pipe, int entryPoint)
     {
         int exitPoint = -1;
         int typeId = GetTypeId(pipe.m_Type, pipe.m_Orientation);
@@ -133,7 +133,7 @@ public class PipeUtils
 
 
     //-1 is center
-    static public Queue<Vector3> GetWayPoints(PipeSection pipe, int startPoint, int exitPoint)
+    static public Queue<Vector3> GetWayPoints(Tile pipe, int startPoint, int exitPoint)
     {
         GridLocation gridLocation = pipe.GetComponent<GridLocation>();
         Queue<Vector3> queue = new Queue<Vector3>();

@@ -18,5 +18,5 @@ MonoBehaviour:
   m_CurrentDataPath: Assets/Assets/UI/Glow/
   m_Data:
   - m_SearchName: gh_ui_allspark_(1)
-    m_SharedTexture: {fileID: 0}
-    m_SharedMaterial: {fileID: 0}
+    m_SharedTexture: {fileID: 2800000, guid: 18a87f3b20ddf48cd95d6a679dd903a2, type: 3}
+    m_SharedMaterial: {fileID: 2100000, guid: ca91607cd39a54173a6cc076cdabf968, type: 2}

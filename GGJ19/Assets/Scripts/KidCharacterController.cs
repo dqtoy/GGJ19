@@ -17,7 +17,7 @@ public class KidCharacterController : Singleton<KidCharacterController>
     public Queue<Vector3> wayPoints;
 
     private CharacterState characterState = CharacterState.Preparing;
-    private PipeSection currentTile;
+    private Tile currentTile;
 
 
 	private void Update()
@@ -29,7 +29,7 @@ public class KidCharacterController : Singleton<KidCharacterController>
 
 
 
-    public void Init(PipeSection startTile)
+    public void Init(Tile startTile)
     {
         currentTile = startTile;
         SpawnCharacter();
@@ -44,7 +44,7 @@ public class KidCharacterController : Singleton<KidCharacterController>
     private void SpawnCharacter()
     {
         //spawn at spawn point
-        kidCharacter.SetActive(true);
+        //kidCharacter.SetActive(true);
 
         currentTile.OnPlayerEnter(0);
 

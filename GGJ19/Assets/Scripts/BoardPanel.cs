@@ -17,14 +17,14 @@ public class BoardPanel : Singleton<BoardPanel>
 
     public Transform m_PipesRoot;
 
-    private PipeSection[,] m_LaidPipes;
-    public PipeSection m_EntryTile;
-    public PipeSection m_ExitTile;
+    private Tile[,] m_LaidPipes;
+    public Tile m_EntryTile;
+    public Tile m_ExitTile;
     private float tileLength;
 
     public void SetEntryExit(
-        PipeSection entryTile, int entryGridX, int entryGridY, 
-        PipeSection exitTile, int exitGridX, int exitGridY)
+        Tile entryTile, int entryGridX, int entryGridY, 
+        Tile exitTile, int exitGridX, int exitGridY)
     {
         m_EntryTile = entryTile;
         AddToBoard(entryTile, entryGridX, entryGridY);
@@ -33,7 +33,7 @@ public class BoardPanel : Singleton<BoardPanel>
         AddToBoard(exitTile, exitGridX, exitGridY);
     }
 
-    public void AddToBoard(PipeSection tile, int gridX, int gridY)
+    public void AddToBoard(Tile tile, int gridX, int gridY)
     {
         tile.gameObject.transform.SetParent(m_PipesRoot);
         GridLocation gridLocation = tile.GetComponent<GridLocation>();
@@ -47,7 +47,7 @@ public class BoardPanel : Singleton<BoardPanel>
     // Start is called before the first frame update
     void Awake()
     {
-        m_LaidPipes = new PipeSection[NumColumns, NumRows];
+        m_LaidPipes = new Tile[NumColumns, NumRows];
     }
 
     void Update()
@@ -125,8 +125,8 @@ public class BoardPanel : Singleton<BoardPanel>
 
     void SpawnPieceIfPossible(GridLocation spawnLocation, PlayerPanel playerToSpawnFrom)
     {
-        PipeSection existingTile = m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY];
-        if (existingTile != null && existingTile.m_Type == PipeSection.Type.NonRemoveableObstacle)
+        Tile existingTile = m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY];
+        if (existingTile != null && existingTile.m_Type == Tile.Type.NonRemoveableObstacle)
         {
             return;
         }
@@ -141,7 +141,7 @@ public class BoardPanel : Singleton<BoardPanel>
             gridLocation.m_GridY = spawnLocation.m_GridY;
             gridLocation.SnapToGrid();
 
-            m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY] = piece.GetComponent<PipeSection>();
+            m_LaidPipes[spawnLocation.m_GridX, spawnLocation.m_GridY] = piece.GetComponent<Tile>();
         }
     }
 

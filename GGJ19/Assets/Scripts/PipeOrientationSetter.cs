@@ -7,29 +7,29 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class PipeOrientationSetter : MonoBehaviour
 {
-    private PipeSection pipeSection;
+    private Tile tile;
     
     // Start is called before the first frame update
     void Start()
     {
-        pipeSection = gameObject.GetComponent<PipeSection>();
+        tile = gameObject.GetComponent<Tile>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (pipeSection.m_Orientation)
+        switch (tile.m_Orientation)
         {
-            case PipeSection.PipeRotation.NoRotation:
+            case Tile.PipeRotation.NoRotation:
                 gameObject.transform.rotation = Quaternion.identity;
                 break;
-            case PipeSection.PipeRotation.Clockwise90:
+            case Tile.PipeRotation.Clockwise90:
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, -90);
                 break;
-            case PipeSection.PipeRotation.Clockwise180:
+            case Tile.PipeRotation.Clockwise180:
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, -180);
                 break;
-            case PipeSection.PipeRotation.Clockwise270:
+            case Tile.PipeRotation.Clockwise270:
                 gameObject.transform.rotation = Quaternion.Euler(0, 0, -270);
                 break;
         }

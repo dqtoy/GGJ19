@@ -3,11 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PipeFactory : Singleton<PipeFactory>
+public class TileFactory : Singleton<TileFactory>
 {
-    public List<PipeSection> pipePrefabs;
+    public List<Tile> pipePrefabs;
 
-    public List<PipeSection> specialTiles;
+    public List<Tile> specialTiles;
     
     // Start is called before the first frame update
     public void SpawnRandomTile(Transform parent)
@@ -16,7 +16,7 @@ public class PipeFactory : Singleton<PipeFactory>
         Instantiate(pipePrefabs[random-1], parent);
     }
 
-    public PipeSection SpawnTileByName(string name)
+    public Tile SpawnTileByName(string name)
     {
         foreach (var prefab in pipePrefabs)
         {

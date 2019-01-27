@@ -7,6 +7,13 @@ using UnityEngine.Serialization;
 [Serializable]
 public class PipeSection : MonoBehaviour
 {
+    public enum Type
+    {
+        Cross,
+        Straight,
+        Curved
+    };
+    
     public enum PipeRotation
     {
         NoRotation,
@@ -14,7 +21,8 @@ public class PipeSection : MonoBehaviour
         Clockwise180,
         Clockwise270
     };
-    
+
+    public Type m_Type = PipeSection.Type.Cross;
     public PipeSection.PipeRotation m_Orientation = PipeRotation.NoRotation; 
     
     // Start is called before the first frame update

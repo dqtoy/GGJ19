@@ -142,13 +142,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 063acdf03a3524d82a61f8768500aa93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Cross: {fileID: 3060494194032205072}
-  m_Straight1: {fileID: 3060494194032205071}
-  m_Straight2: {fileID: 3060494194032205070}
-  m_Curved1: {fileID: 3060494194032205069}
-  m_Curved2: {fileID: 3060494194032205068}
-  m_Curved3: {fileID: 3060494194032205067}
-  m_Curved4: {fileID: 3060494194032205066}
+  pipePrefabs:
+  - {fileID: 3060494194032205072}
+  - {fileID: 3060494194032205071}
+  - {fileID: 3060494194032205070}
+  - {fileID: 3060494194032205069}
+  - {fileID: 3060494194032205068}
+  - {fileID: 3060494194032205067}
+  - {fileID: 3060494194032205066}
 --- !u!114 &63323516
 MonoBehaviour:
   m_ObjectHideFlags: 0

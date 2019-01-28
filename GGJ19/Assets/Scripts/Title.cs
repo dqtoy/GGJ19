@@ -14,12 +14,12 @@ public class Title : MonoBehaviour
     public FadeInOut Text;
     private bool clicked = false;
 
-	private void Start()
-	{
-        //Text.Play();
-	}
+//	private void Start()
+//	{
+//        //Text.Play();
+//	}
 
-	private void OnMouseDown()
+	private void Start()
 	{
         if (clicked)
             return;

@@ -45,7 +45,7 @@ public class PlayerPanel : MonoBehaviour
         // Populate the piece at position 5
         if (pieceLocations[pieceLocations.Count - 1].transform.childCount == 0)
         {
-            TileFactory.Instance.SpawnRandomTile(pieceLocations[pieceLocations.Count - 1].transform);
+            GameplayManager.Instance.TileFactory.SpawnRandomTile(pieceLocations[pieceLocations.Count - 1].transform);
         }
         
     }

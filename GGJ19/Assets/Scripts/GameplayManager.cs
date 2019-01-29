@@ -14,6 +14,11 @@ public enum GameState
 
 public class GameplayManager : Singleton<GameplayManager>
 {
+    public TileFactory TileFactory { get; set; }
+    public BoardPanel BoardPanel { get; set; }
+    public KidCharacterController KidCharacterController { get; set; }
+    public MusicManager MusicManager { get; set; }
+
     public GameState gameState = GameState.Title;
 
     public delegate void GameWin();     
@@ -49,32 +54,32 @@ public class GameplayManager : Singleton<GameplayManager>
     public void LoadLevel()
     {
         // Add the start point
-        BoardPanel.Instance.SetEntryExit(
-            TileFactory.Instance.SpawnTileByName("PipeSectionStraight1"), 
+        Instance.BoardPanel.SetEntryExit(
+            Instance.TileFactory.SpawnTileByName("PipeSectionStraight1"), 
             0, 
             0, 
-            TileFactory.Instance.SpawnTileByName("ExitTile"), 
+            Instance.TileFactory.SpawnTileByName("ExitTile"), 
             13, 
             9);
         
         // Add an obstacle
-        BoardPanel.Instance.AddToBoard(
-            TileFactory.Instance.SpawnTileByName("NonRemoveableObstacle"),
+        Instance.BoardPanel.AddToBoard(
+            Instance.TileFactory.SpawnTileByName("NonRemoveableObstacle"),
             5, 
             5);
         
-        BoardPanel.Instance.AddToBoard(
-            TileFactory.Instance.SpawnTileByName("PipeSectionCross"),
+        Instance.BoardPanel.AddToBoard(
+            Instance.TileFactory.SpawnTileByName("PipeSectionCross"),
             1,
             0);
         
-        BoardPanel.Instance.AddToBoard(
-            TileFactory.Instance.SpawnTileByName("PipeSectionCurve1"),
+        Instance.BoardPanel.AddToBoard(
+            Instance.TileFactory.SpawnTileByName("PipeSectionCurve1"),
             2,
             0);
         
-        BoardPanel.Instance.AddToBoard(
-            TileFactory.Instance.SpawnTileByName("BlackHole"),
+        Instance.BoardPanel.AddToBoard(
+            Instance.TileFactory.SpawnTileByName("BlackHole"),
             9, 
             5);
     }
@@ -106,7 +111,7 @@ public class GameplayManager : Singleton<GameplayManager>
 
     private void SpawnCharacterOnBoard()
     {
-        KidCharacterController.Instance.Init(BoardPanel.Instance.m_EntryTile);
+        KidCharacterController.Init(Instance.BoardPanel.m_EntryTile);
     }
 
 

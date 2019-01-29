@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour
         //calculate exit point
         characterEntry = enterPoint;
         characterExit = TileUtils.GetExitPoint(this, enterPoint);
-        KidCharacterController.Instance.UpdateWayPoint();
+        GameplayManager.Instance.KidCharacterController.UpdateWayPoint();
 
         SetTileCrossed();
     }

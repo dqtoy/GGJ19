@@ -12,20 +12,20 @@ public enum TitleState
 public class Title : MonoBehaviour
 {
     public FadeInOut Text;
-    private bool clicked = false;
-
-//	private void Start()
-//	{
-//        //Text.Play();
-//	}
+    private static bool firstLaunch = true;
 
 	private void Start()
 	{
-        if (clicked)
-            return;
+		if (!firstLaunch)
+		{
+			gameObject.SetActive(false);
+		}
+		else
+		{
+			Text.Play();
+		}
 
-        clicked = true;
-        Text.Play();
+		firstLaunch = false;
         GameplayManager.Instance.StartGame();
 	}
 }

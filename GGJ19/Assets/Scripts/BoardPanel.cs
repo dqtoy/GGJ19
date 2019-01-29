@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class BoardPanel : Singleton<BoardPanel>
+public class BoardPanel : MonoBehaviour
 {
     public const int NumRows = 10;
     public const int NumColumns = 14;
@@ -58,6 +58,7 @@ public class BoardPanel : Singleton<BoardPanel>
     // Start is called before the first frame update
     void Awake()
     {
+        GameplayManager.Instance.BoardPanel = this; // Set myself on GameplayManager
         m_LaidTiles = new Tile[NumColumns, NumRows];
     }
 

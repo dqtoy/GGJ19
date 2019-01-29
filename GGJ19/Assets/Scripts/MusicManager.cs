@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class MusicManager : Singleton<MusicManager> {
+public class MusicManager : MonoBehaviour {
 
     [Header("Background Music")]
     public AudioSource audioSource_BG;
@@ -17,7 +17,10 @@ public class MusicManager : Singleton<MusicManager> {
     public AudioClip audioClip_Connect;
     public AudioClip audioClip_Disconnect;
 
-
+    public void Awake()
+    {
+        GameplayManager.Instance.MusicManager = this;
+    }
 
 	public void PlayBGMusic()
     {

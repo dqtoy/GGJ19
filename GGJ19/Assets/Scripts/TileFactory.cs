@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileFactory : Singleton<TileFactory>
+public class TileFactory : MonoBehaviour
 {
     public List<Tile> pipePrefabs;
 
     public List<Tile> specialTiles;
+
+    public void Awake()
+    {
+        GameplayManager.Instance.TileFactory = this; // Set myself on GameplayManager
+    }
     
     // Start is called before the first frame update
     public void SpawnRandomTile(Transform parent)

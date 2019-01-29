@@ -61,8 +61,8 @@ public class BlackHole : MonoBehaviour
             if (deltaForTimestep.sqrMagnitude > deltaToTarget.sqrMagnitude)
             {
                 // We're almost there so just snap to the location
-                BoardPanel.Instance.RemoveFromBoard(m_TileComponent);
-                BoardPanel.Instance.AddToBoard(m_TileComponent, targetGridX, targetGridY);
+               GameplayManager.Instance.BoardPanel.RemoveFromBoard(m_TileComponent);
+               GameplayManager.Instance.BoardPanel.AddToBoard(m_TileComponent, targetGridX, targetGridY);
                 m_RectTransformComponent.SetAsFirstSibling(); // Make sure it's underneath the others
                 m_TileToSwallow = null;
                 return;
@@ -73,7 +73,7 @@ public class BlackHole : MonoBehaviour
                 m_RectTransformComponent.anchoredPosition += deltaForTimestep;
             }
 
-            m_TileToSwallow = BoardPanel.Instance.GetTile(targetGridX, targetGridY); // Check if a tile was added
+            m_TileToSwallow =GameplayManager.Instance.BoardPanel.GetTile(targetGridX, targetGridY); // Check if a tile was added
             if (m_TileToSwallow != null)
             {
                 // Shrink it and squash/stretch it a bit
@@ -98,7 +98,7 @@ public class BlackHole : MonoBehaviour
         {
             // Pick a square next to the black hole and move towards it
             FindSquareToMoveTo();
-            m_TileToSwallow = BoardPanel.Instance.GetTile(targetGridX, targetGridY);
+            m_TileToSwallow =GameplayManager.Instance.BoardPanel.GetTile(targetGridX, targetGridY);
             m_SecondsUntilNextMove = m_NumSecondsBetweenMoves;
             m_TimeOfLastMove = m_ElapsedTime;
         }
@@ -109,14 +109,14 @@ public class BlackHole : MonoBehaviour
         int random = Random.Range(0, 9);
         targetGridX = m_GridLocationComponent.m_GridX + (random % 3) - 1;
         targetGridY = m_GridLocationComponent.m_GridY + (random / 3) - 1;
-        bool canAccept = BoardPanel.Instance.CanAcceptTile(targetGridX, targetGridY, true);
+        bool canAccept =GameplayManager.Instance.BoardPanel.CanAcceptTile(targetGridX, targetGridY, true);
 
         while (canAccept == false)
         {
             random = Random.Range(0, 9);
             targetGridX = m_GridLocationComponent.m_GridX + (random % 3) - 1;
             targetGridY = m_GridLocationComponent.m_GridY + (random / 3) - 1;
-            canAccept = BoardPanel.Instance.CanAcceptTile(targetGridX, targetGridY, true);
+            canAccept =GameplayManager.Instance.BoardPanel.CanAcceptTile(targetGridX, targetGridY, true);
         }
     }
 }

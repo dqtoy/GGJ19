@@ -25,7 +25,7 @@ public class Lose : MonoBehaviour
 
 	private void Update()
 	{
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.anyKeyDown)
         {
             SceneManager.LoadScene("Game2");
         }

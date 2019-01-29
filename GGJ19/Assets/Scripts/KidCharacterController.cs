@@ -10,7 +10,7 @@ public enum CharacterState
     Lose
 };
 
-public class KidCharacterController : Singleton<KidCharacterController>
+public class KidCharacterController : MonoBehaviour
 {
     public GameObject kidCharacter;
     public float moveSpeed;
@@ -19,6 +19,11 @@ public class KidCharacterController : Singleton<KidCharacterController>
     private CharacterState characterState = CharacterState.Preparing;
     private Tile currentTile;
     private Vector2 targetPosition;
+
+    public void Awake()
+    {
+        GameplayManager.Instance.KidCharacterController = this;
+    }
 
 
 	private void Update()
@@ -96,20 +101,20 @@ public class KidCharacterController : Singleton<KidCharacterController>
         else if (currentTile.characterExit == 3)
             y += 1;
 
-        if (!BoardPanel.Instance.IsValidPosition(x, y))
+        if (!GameplayManager.Instance.BoardPanel.IsValidPosition(x, y))
         {
             GameplayManager.Instance.Lose();
             return;
         }
 
-        Tile neighborTile = BoardPanel.Instance.GetTile(x, y);
+        Tile neighborTile =GameplayManager.Instance.BoardPanel.GetTile(x, y);
         if (neighborTile == null)
         {
             GameplayManager.Instance.Lose();
             return;
         }
 
-        if (neighborTile == BoardPanel.Instance.m_ExitTile)
+        if (neighborTile ==GameplayManager.Instance.BoardPanel.m_ExitTile)
         {
             GameplayManager.Instance.Win();
             return;
